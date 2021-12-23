@@ -8,16 +8,22 @@ function editNav() {
 }
 
 // DOM Elements
-const modalbg = document.querySelector(".bground");
+const modalbg = document.getElementById("formWindow");
 const modalBtn = document.querySelectorAll(".modal-btn");
 const formData = document.querySelectorAll(".formData");
+const closeForm = document.getElementById("cross");
 
-// launch modal event
-modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
 
-// launch modal form
-function launchModal() {
-  modalbg.style.display = "block";
+// ajouter une classe au formulaire 
+
+function addClass() {
+  modalbg.classList.add("misha");
 }
 
+modalBtn.forEach((btn) =>btn.addEventListener("click", addClass))
 
+
+// close form
+closeForm.addEventListener("click", () => {
+  modalbg.classList.remove("misha");
+})
