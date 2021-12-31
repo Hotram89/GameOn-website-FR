@@ -16,6 +16,7 @@ const closeForm = document.getElementById("cross");
 const submitBtn = document.getElementsByClassName('btn-submit');
 const form = document.querySelector("form");
 const firstName = document.getElementById("first");
+const regex = /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
 
 
 
@@ -46,6 +47,7 @@ form.addEventListener("submit", (e) => {
 //fonction pour afficher un message d'erreur
 function refuser(){
   formData[0].setAttribute("data-error-visible", "true");
+  
 }
 //fonction pour accepter le champ
 function accepter(){
@@ -54,26 +56,46 @@ function accepter(){
 
 //fonction pour récupérer les valeurs entrées
 
+//condition pour donner des indications sur le nombre de caracteres du PRENOM
 const firstNameChecker = (value) => {
 formData.forEach((input) => {
   if (value.length > 0 && (value.length <3 || value.length > 20)
   ) {
     
     refuser();
+    formData[0].setAttribute("data-error", "Le prénom doit contenir entre 2 et 20 caractères");
   }else {
     accepter();
   }
   })
   ;
 };
-//condition pour donner des indications sur le nombre de caracteres
+//condition pour donner des indications sur le nombre de caracteres du NOM
 
-const lastNameChecker = () => {
-  
+const lastNameChecker =  (value) => {
+  formData.forEach((input) => {
+  if (value.length > 0 && (value.length <3 || value.length > 20)
+  ) {
+    
+    formData[1].setAttribute("data-error-visible", "true");
+    formData[1].setAttribute("data-error", "Le nom doit contenir entre 2 et 20 caractères");
+  }else {
+    formData[1].setAttribute("data-error-visible", "false")
+  }
+  })
+  ;
 };
 
-const emailChecker = ()=> {
-
+const emailChecker = (value)=> { 
+  formData.forEach((input) => {
+if (!value.match(/^[\w_-]+@[\w-]+\.[a-z]{2,4}$/i)) 
+ {
+  formData[2].setAttribute("data-error-visible", "true")
+  formData[2].setAttribute("data-error", "L'adresse mail n'est pas correcte");
+}else {
+  formData[2].setAttribute("data-error-visible", "false")
+}
+  });
 };
 //fonction pour déterminer sur quel input je travaille
 
@@ -85,10 +107,10 @@ formData.forEach((input) => {
         firstNameChecker(e.target.value);
         break;
       case "last":
-        lastNameChecker();
+        lastNameChecker(e.target.value);
         break;
       case "email":
-        emailChecker();
+        emailChecker(e.target.value);
         break;
       default:
         console.log("choconul");   
