@@ -88,7 +88,7 @@ const lastNameChecker =  (value) => {
 
 const emailChecker = (value)=> { 
   formData.forEach((input) => {
-if (!value.match(/^[\w_-]+@[\w-]+\.[a-z]{2,4}$/i)) 
+if (!value.match(/^[\w_-]+@[\w-]+\.[a-z]{2,4}$/i) || ( value == '' )) 
  {
   formData[2].setAttribute("data-error-visible", "true")
   formData[2].setAttribute("data-error", "L'adresse mail n'est pas correcte");
@@ -97,6 +97,27 @@ if (!value.match(/^[\w_-]+@[\w-]+\.[a-z]{2,4}$/i))
 }
   });
 };
+
+const dateChecker = (value)=> {
+  if ( value == '' ) {
+    formData[3].setAttribute("data-error-visible", "true");
+    formData[3].setAttribute("data-error", "Vous devez entrer votre date de naissance.");
+ 
+  }else {
+    formData[3].setAttribute("data-error-visible", "false")
+  }
+};
+
+const challengeChecker = (value) => {
+  if ( value < 0 || (value == '')) 
+  {
+    formData[4].setAttribute("data-error-visible", "true");
+    formData[4].setAttribute("data-error", "Vous devez entrer un nombre.");
+  }else {
+    formData[4].setAttribute("data-error-visible", "false")
+  }
+  };
+
 //fonction pour déterminer sur quel input je travaille
 
 formData.forEach((input) => {
@@ -111,6 +132,15 @@ formData.forEach((input) => {
         break;
       case "email":
         emailChecker(e.target.value);
+        break;
+      case "birthdate":
+        dateChecker(e.target.value);
+        break;
+      case "quantity":
+        challengeChecker(e.target.value);
+        break;
+      case "checkbox-input":
+        checkboxChecker(e.target.value);
         break;
       default:
         console.log("choconul");   
