@@ -1,18 +1,11 @@
-function editNav() {
-  var x = document.getElementById("myTopnav");
-  if (x.className === "topnav") {
-    x.className += " responsive";
-  } else {
-    x.className = "topnav";
-  }
-}
+
 
 // DOM Elements
 const modalbg = document.getElementById("formWindow");
-const modalBtn = document.querySelectorAll(".modal-btn");
+
 //variable pour tous les inputs
 const formData = document.querySelectorAll(".formData");
-const closeForm = document.getElementById("cross");
+
 const submitBtn = document.getElementsByClassName('btn-submit');
 const form = document.querySelector("form");
 const firstName = document.getElementById("first");
