@@ -11,26 +11,12 @@ const modalBtn = document.querySelectorAll(".modal-btn");
 export function launchModal() {
     modalbg.style.display = "block";
   }
-// launch modal event
+// ouvrir la fenetre
 modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));  
   
-// close modal event
-
-
-closeForm.addEventListener("click", () => {
-  const description = document.querySelector(".hero-text");
+// fermer la fenetre
+closeForm.addEventListener("click", () => { 
     modalbg.style.display = "none";
-    description.parentNode.removeChild(description);
-
-    console.log(description);
-  console.log(typeof description);
   }) 
   
- 
 
-  
-
-  //
-  
-
-  
