@@ -7,6 +7,7 @@ const closeForm = document.getElementById("cross");
 const modalbg = document.getElementById("formWindow");
 const modalBtn = document.querySelectorAll(".modal-btn");
 
+
 // launch modal function
 export function launchModal() {
     modalbg.style.display = "block";
@@ -14,9 +15,11 @@ export function launchModal() {
 // ouvrir la fenetre
 modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));  
   
+// close modal function
+function closeModal() {
+  modalbg.style.display = "none";
+}
 // fermer la fenetre
-closeForm.addEventListener("click", () => { 
-    modalbg.style.display = "none";
-  }) 
+closeForm.addEventListener("click", closeModal );
   
 

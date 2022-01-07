@@ -1,7 +1,7 @@
 // DOM Elements
 const formField = document.querySelectorAll(".formData");
 const submitBtn = document.getElementsByClassName('btn-submit');
-const form = document.querySelector("form");
+
 let hasError = 0;
 
 
@@ -38,9 +38,9 @@ form.addEventListener('keyup', (e) => {
     let errorName = lastName.closest('div');
     console.log(errorName);
 
-    if (lastName.value.lenght > 0 && (lastName.value.lenght <3 || lastName.value.lenght > 20)
+    if (lastName.value.length > 0 && (lastName.value.length <3 || lastName.value.length > 20)
     ) {
-        
+    
         errorName.setAttribute("data-error", "Le nom doit contenir entre 2 et 20 caractères");
         errorName.setAttribute("data-error-visible", "true");
         hasError = true;
