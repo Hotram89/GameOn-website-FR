@@ -9,12 +9,14 @@ export function validerChamps()
     let champDate = document.querySelector('#birthdate').value;
     let champChallenge = document.querySelector('#quantity').value;
     let champVille = document.querySelector('#location1');
+    let champCondition = document.querySelector('#checkbox1');
     validerChampPrenom(champPrenom);
     validerChampNom(champNom);
     validerChampEmail(champEmail);
     validerChampDate(champDate);
     validerChampChallenge(champChallenge);
     validerChampVille(champVille);
+    validerConditions(champCondition);
     
 }
 
@@ -69,5 +71,14 @@ function validerChampChallenge(challenge)
           console.log(" New York est coché ");
      } else {
          console.log("New York n'est pas coché");
+     }
+ }
+
+ function validerConditions(caseCheck)
+ {
+     if (caseCheck.checked) {
+         console.log("Les conditions sont cochées");
+     } else {
+         console.log("Veuillez accepter les conditions d'utilisation");
      }
  }
