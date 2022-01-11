@@ -3,82 +3,77 @@
 // fonction qui sert a savoir si mes champs sont valides
 export function validerChamps() 
 {
-    let champPrenom = document.querySelector('#first').value;
-    let champNom = document.querySelector('#last').value;
-    let champEmail = document.querySelector('#email').value;
-    let champDate = document.querySelector('#birthdate').value;
-    let champChallenge = document.querySelector('#quantity').value;
-    let champVille = document.querySelector('#location1');
+    let champPrenom = document.querySelector('#first');
+    let champNom = document.querySelector('#last');
+    let champEmail = document.querySelector('#email');
+    let champDate = document.querySelector('#birthdate');
+    let champChallenge = document.querySelector('#quantity');
+    let listeVilles = document.querySelectorAll('input[name=location]');
     let champCondition = document.querySelector('#checkbox1');
-    validerChampPrenom(champPrenom);
-    validerChampNom(champNom);
-    validerChampEmail(champEmail);
-    validerChampDate(champDate);
-    validerChampChallenge(champChallenge);
-    validerChampVille(champVille);
-    validerConditions(champCondition);
-    
+
+    let validateurGlobal = 
+    validerChampText(champPrenom)
+    && validerChampText(champNom)
+    && validerChampEmail(champEmail)
+    && validerChampDate(champDate)
+    && validerChampChallenge(champChallenge)
+    && validerChampVille(listeVilles)
+    && validerConditions(champCondition);
+
+    console.log(validateurGlobal);
+   
 }
 
 // fonction qui sert a savoir si le prenom est correct
-function validerChampPrenom(prenom) 
+function validerChampText(field, message) 
 {  
-    if ( prenom.length >= 3 ) console.log("le prenom est correct");
-    else console.log(" le prénom n'est pas bon ");
+    let isValid = field.value.trim().length > 2;
+ //   console.log(isValid);
+    return isValid;
 }
-// fonction qui sert a savoir si le nom est correct
-function validerChampNom(nom)
-{
-    if (nom.length >= 3 )  {
-        console.log(" le nom est correct");
-    } else {
-        console.log(" le nom n'est pas bon ");
-    }
-}
+
 // fonction qui sert a savoir si l'email est correct
-function validerChampEmail(email)
+function validerChampEmail(field, message)
 {
-    if (email.match(/^[\w_-]+@[\w-]+\.[a-z]{2,4}$/i) ) {
-        console.log( "l'email est correct");
-    } else {
-        console.log( "l'email n'est pas bon");
-    }
+    let email= field.value;
+    let isValid = /^[\.\w_-]+@[\w-]+\.[a-z]{2,4}$/i.test(email);
+ //   console.log(isValid);
+    return isValid;
+    
 }
 // fonction qui sert a savoir si la date est entrée
-function validerChampDate(date)
+function validerChampDate(field, message)
 {
-    if (date.length > 0) {
-        console.log("la date est entrée");
-    } else {
-        console.log("veuillez entrer une date");
-    }
+    let isValid = field.value.trim().length > 0 ;
+ //   console.log(isValid);
+    return isValid;
 }
 
 //fonction qui sert à savoir si un nombre est entré
-function validerChampChallenge(challenge)
-{
-    if (challenge.length > 0) {
-        console.log("le nombre de challenge est correct");
-    } else {
-        console.log("le nombre de challenge n'est pas bon");
-    }
+function validerChampChallenge(field, message)
+{ 
+    let isValid = field.value.length > 0 ;
+//    console.log(isValid);
+    return isValid;
 }
 
 //fonction qui sert à savoir si une ville est cochée
- function validerChampVille(ville)
+ function validerChampVille(field)
  {
-   if (ville.checked) {
-          console.log(" New York est coché ");
-     } else {
-         console.log("New York n'est pas coché");
+     for (let i = 0; i < field.length; i++)
+     { 
+         let isValid = false;
+         if (field[i].checked){
+             console.log("c'est coché");
+             return true;
+         }
+         console.log("c'est pas coché");
      }
  }
 
- function validerConditions(caseCheck)
+ function validerConditions(field)
  {
-     if (caseCheck.checked) {
-         console.log("Les conditions sont cochées");
-     } else {
-         console.log("Veuillez accepter les conditions d'utilisation");
-     }
+     let isValid = field.checked;
+  //   console.log(isValid);
+     return isValid;
  }
