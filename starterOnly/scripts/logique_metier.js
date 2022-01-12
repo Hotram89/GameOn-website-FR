@@ -23,3 +23,7 @@ function closeModal() {
 closeForm.addEventListener("click", closeModal );
   
 
+// ouvrir la fenetre quand c'est validé
+export function openSuccessModal() {
+  alert ("ouais une nouvelle fenetre s'ouvre");
+}
