@@ -23,6 +23,8 @@ body {
 p {
   margin-bottom: 0;
   padding: 0.5vw;
+  margin-top: 11px;
+  margin-bottom: 11px;
 }
 
 img {
@@ -186,13 +188,27 @@ main {
   padding: 15px 8%;
   margin: 15px auto;
 }
+.modal-msg {
+  height: 800px;
+  display: flex;
+  align-items: center;
+  padding: 8rem;
+  text-align: center;
+  font-weight: 200;
+ 
+}
+.modal-msg::after {
+  
+  content: " Merci pour votre inscription";
 
+}
 label {
   font-family: var(--font-default);
-  font-size: 17px;
+  font-size: 14px;
   font-weight: normal;
   display: inline-block;
   margin-bottom: 11px;
+  margin-top: 16px;
 }
 input {
   padding: 8px;

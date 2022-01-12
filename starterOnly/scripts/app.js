@@ -4,22 +4,29 @@ import { launchModal } from "./logique_metier.js";
 import { openSuccessModal } from "./logique_metier.js";
 
 
-import { validerChamps , validerChampText , validerChampEmail , validerChampDate , validerChampVille , validerConditions , validerChampChallenge } from "./validation.js";
-
+import { validerChamps } from "./validation.js";
 
 
 
 
 const form = document.querySelector("form");
+const modal = document.querySelector(".modal-body");
+
 
 // bloquer le formulaire
 form.addEventListener("submit", (e) => {
-    validerChamps();
-    e.preventDefault();
     
+    e.preventDefault();  
+   
+    modal.classList.remove("modal-msg");
+    
+
+   
  //   if (document.querySelectorAll('[data-error-visible=true]').length == 0) {
-    if    (validateurGlobal === true )
+    if    (validerChamps() === true )
     {
-        openSuccessModal();
+        form.style.display = 'none';
+        modal.classList.add("modal-msg");
+       // openSuccessModal();
     }
 });

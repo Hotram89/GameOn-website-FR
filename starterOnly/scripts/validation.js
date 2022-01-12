@@ -15,21 +15,23 @@ export function validerChamps()
     let msgPrenom = "Le prénom doit contenir au minimum 2 caractères";
     let msgNom = "le nom doit contenir au minimum 2 caractères";
     let msgMail = "Veuillez respectez le format du courriel (exemple@domaine.fr)";
+    let msgDate = "Vous devez entrer votre date de naissance";
     let msgCond = "Veuillez accepter les conditions pour finaliser l'inscription";
+    let msgChall = "Vous devez entrer un nombre";
+    let msgVille = "Vous devez choisir une option";
     //recuperer tout les true et false et calculer le resultat final
     let validateurGlobal = 
     validerChampText(champPrenom , msgPrenom)
     && validerChampText(champNom, msgNom)
     && validerChampEmail(champEmail, msgMail)
-    && validerChampDate(champDate)
-    && validerChampChallenge(champChallenge)
-    && validerChampVille(listeVilles)
+    && validerChampDate(champDate, msgDate)
+    && validerChampChallenge(champChallenge, msgChall)
+    && validerChampVille(listeVilles, msgVille)
     && validerConditions(champCondition, msgCond);
 
-    console.log(validateurGlobal);
-   
+    console.log(validateurGlobal); 
+    return validateurGlobal;
 }
-
 
 // fonction qui sert a savoir si le prenom est correct
 export function validerChampText(field, message) 
@@ -54,7 +56,7 @@ export function validerChampEmail(field, message)
     if (isValid === false)
     {
         field.closest('div').setAttribute("data-error-visible", true);
-        field.closest('div').setAttribute("data-error", message)
+        field.closest('div').setAttribute("data-error", message);
     } else {
         field.closest('div').setAttribute("data-error-visible", false);
     }
@@ -69,6 +71,7 @@ export function validerChampDate(field, message)
     if (isValid === false)
     {
         field.closest('div').setAttribute("data-error-visible", true);
+        field.closest('div').setAttribute("data-error", message);
     
     } else {
         field.closest('div').setAttribute("data-error-visible", false);
@@ -84,6 +87,7 @@ export function validerChampChallenge(field, message)
     if (isValid === false)
     {
         field.closest('div').setAttribute("data-error-visible", true);
+        field.closest('div').setAttribute("data-error", message)
 
     } else {
         field.closest('div').setAttribute("data-error-visible", false);
@@ -93,7 +97,7 @@ export function validerChampChallenge(field, message)
 }
 
 //fonction qui sert à savoir si une ville est cochée
-export function validerChampVille(field)
+export function validerChampVille(field , message)
  {
      for (let i = 0; i < field.length; i++)
      { 
@@ -103,6 +107,7 @@ export function validerChampVille(field)
              return true;
          }
          console.log("c'est pas coché");
+        
      }
  }
 //fonction qui sert à savoir si la condition est cochée
