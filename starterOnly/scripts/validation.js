@@ -1,15 +1,12 @@
-
-
 // fonction qui sert a savoir si mes champs sont valides
 export function validerChamps() 
 {
-    
     let champPrenom = document.querySelector('#first');
     let champNom = document.querySelector('#last');
     let champEmail = document.querySelector('#email');
     let champDate = document.querySelector('#birthdate');
     let champChallenge = document.querySelector('#quantity');
-    let listeVilles = document.querySelectorAll('input[name=location]');
+    let champVilles = document.querySelectorAll('input[name=location]:checked');
     let champCondition = document.querySelector('#checkbox1');
 
     let msgPrenom = "Le prénom doit contenir au minimum 2 caractères";
@@ -20,52 +17,66 @@ export function validerChamps()
     let msgChall = "Vous devez entrer un nombre";
     let msgVille = "Vous devez choisir une option";
     //recuperer tout les true et false et calculer le resultat final
-    let validateurGlobal = 
+    
     validerChampText(champPrenom , msgPrenom)
-    && validerChampText(champNom, msgNom)
-    && validerChampEmail(champEmail, msgMail)
-    && validerChampDate(champDate, msgDate)
-    && validerChampChallenge(champChallenge, msgChall)
-    && validerChampVille(listeVilles, msgVille)
-    && validerConditions(champCondition, msgCond);
+     validerChampText(champNom, msgNom)
+     validerChampEmail(champEmail, msgMail)
+     validerChampDate(champDate, msgDate)
+     validerChampChallenge(champChallenge, msgChall)
+     validerChampVille(champVilles, msgVille)
+     validerConditions(champCondition, msgCond);
 
-    console.log(validateurGlobal); 
-    return validateurGlobal;
+}
+// cas 1  etat initial n'a pas d'erreur  maintenant  a 1 erreur        ajouterErreur
+// cas 2               avait 1 erreur                 a 1 erreur       
+// cas 3               n'a pas d'erreur                a 0 erreur      
+// cas 4               avait 1 erreur                  a 0 erreur      retirerErreur
+
+
+function afficherErreur(field, message)
+{
+    if ( field.closest('div').getAttribute('data-error-visible') === 'false' || field.closest('div').getAttribute('data-error-visible') === null)
+    {
+    console.log('afficher erreur');
+    field.closest('div').setAttribute("data-error-visible", true);
+    field.closest('div').setAttribute("data-error", message);
+    }  
+}
+
+function retirerErreur(field, message)
+{
+    field.closest('div').setAttribute("data-error-visible", false)   
 }
 
 // fonction qui sert a savoir si le prenom est correct
-export function validerChampText(field, message) 
-{  
+ function validerChampText(field, message) 
+{   
     let isValid = field.value.trim().length > 2;
     if (isValid === false)
     {
-        field.closest('div').setAttribute("data-error-visible", true);
-        field.closest('div').setAttribute("data-error", message)
+        afficherErreur(field, message);
     } else {
-        field.closest('div').setAttribute("data-error-visible", false);
-    }
- //   console.log(isValid);
-    return isValid;
+        retirerErreur(field);
+    } 
 }
 
 // fonction qui sert a savoir si l'email est correct
-export function validerChampEmail(field, message)
+ function validerChampEmail(field, message)
 {
     let email= field.value;
     let isValid = /^[\.\w_-]+@[\w-]+\.[a-z]{2,4}$/i.test(email);
     if (isValid === false)
     {
-        field.closest('div').setAttribute("data-error-visible", true);
-        field.closest('div').setAttribute("data-error", message);
+        afficherErreur(field, message);
     } else {
-        field.closest('div').setAttribute("data-error-visible", false);
+        retirerErreur(field);
     }
  //   console.log(isValid);
     return isValid;
     
 }
 // fonction qui sert a savoir si la date est entrée
-export function validerChampDate(field, message)
+ function validerChampDate(field, message)
 {
     let isValid = field.value.trim().length > 0 ;
     if (isValid === false)
@@ -81,7 +92,7 @@ export function validerChampDate(field, message)
 }
 
 //fonction qui sert à savoir si un nombre est entré
-export function validerChampChallenge(field, message)
+ function validerChampChallenge(field, message)
 { 
     let isValid = field.value.length > 0 ;
     if (isValid === false)
@@ -97,18 +108,21 @@ export function validerChampChallenge(field, message)
 }
 
 //fonction qui sert à savoir si une ville est cochée
-export function validerChampVille(field , message)
+export function validerChampVille(fields, message)
  {
-     for (let i = 0; i < field.length; i++)
-     { 
-         let isValid = false;
-         if (field[i].checked){
-             console.log("c'est coché");
-             return true;
-         }
-         console.log("c'est pas coché");
+     console.dir(fields);
+     let isValid = fields.length > 0;
+     return isValid;
+    //  for (let i = 0; i < field.length; i++)
+    //  { 
+    //      let isValid = false;
+    //      if (field[i].checked){
+    //          console.log("c'est coché");
+    //          return true;
+    //      }
+    //      console.log("c'est pas coché");
         
-     }
+    //  }
  }
 //fonction qui sert à savoir si la condition est cochée
 export function validerConditions(field, message)
@@ -143,4 +157,7 @@ function messageErreur () {
         console.log( "message d'erreur");
     }
 }
+
+
+
 
