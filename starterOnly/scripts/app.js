@@ -10,26 +10,22 @@ import { validerChamps } from "./validation.js";
 
 
 const form = document.querySelector("form");
-const modal = document.querySelector(".modal-body");
+const modal = document.querySelector("#formWindow");
 
 
 // bloquer le formulaire
 form.addEventListener("submit", (e) => {
     
     e.preventDefault();  
-   
-    modal.classList.remove("modal-msg");
     validerChamps();
 
-   
     if (document.querySelectorAll('[data-error-visible=true]').length == 0) {
  //   if    (validerChamps() === true )
     {   
-        form.reset();
-        form.style.display = 'none';
-        modal.classList.add("modal-msg");
         
-       // openSuccessModal();
+        modal.style.display = 'none';
+        form.reset();
+        openSuccessModal();
     }
 }
 });
