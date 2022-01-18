@@ -10,7 +10,7 @@ export function validerChamps()
     let champCondition = document.querySelector('#checkbox1');
 
     let msgPrenom = "Le prénom doit contenir au minimum 2 caractères";
-    let msgNom = "le nom doit contenir au minimum 2 caractères";
+    let msgNom = "Le nom doit contenir au minimum 2 caractères";
     let msgMail = "Veuillez respectez le format du courriel (exemple@domaine.fr)";
     let msgDate = "Vous devez entrer votre date de naissance";
     let msgCond = "Veuillez accepter les conditions pour finaliser l'inscription";

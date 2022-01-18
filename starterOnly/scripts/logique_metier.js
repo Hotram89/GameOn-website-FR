@@ -4,8 +4,10 @@
 
 // DOM Elements
 const closeForm = document.getElementById("cross");
+const closeFormThanks = document.getElementById("cross-success");
 const modalbg = document.getElementById("formWindow");
 const modalBtn = document.querySelectorAll(".modal-btn");
+const successModal = document.querySelector('.modal-thanks');
 
 
 // launch modal function
@@ -25,6 +27,13 @@ closeForm.addEventListener("click", closeModal );
 
 // ouvrir la fenetre quand c'est validé
 export function openSuccessModal() {
-  const successModal = document.querySelector('.modal-thanks');
+  
   successModal.style.display = 'flex';
 }
+
+//close success modal
+function closeThanksModal() {
+  successModal.style.display = "none";
+}
+// fermer la fenetre
+closeFormThanks.addEventListener("click", closeThanksModal);
