@@ -269,6 +269,18 @@ input[data-error]::after {
     font-size: 1rem;
     color: red;
 } 
+
+.location-msg {
+  display: none;
+}
+.error-display {
+  color:#e54858;
+  margin-left: 5rem;
+  font-size: 0.8rem;
+  display: flex;
+
+}
+
 .checkbox-label,
 .checkbox2-label {
   position: relative;

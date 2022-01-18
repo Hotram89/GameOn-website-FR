@@ -81,11 +81,10 @@ function retirerErreur(field, message)
     let isValid = field.value.trim().length > 0 ;
     if (isValid === false)
     {
-        field.closest('div').setAttribute("data-error-visible", true);
-        field.closest('div').setAttribute("data-error", message);
+        afficherErreur(field, message);
     
     } else {
-        field.closest('div').setAttribute("data-error-visible", false);
+        retirerErreur(field);
     }
  //   console.log(isValid);
     return isValid;
@@ -97,32 +96,32 @@ function retirerErreur(field, message)
     let isValid = field.value.length > 0 ;
     if (isValid === false)
     {
-        field.closest('div').setAttribute("data-error-visible", true);
-        field.closest('div').setAttribute("data-error", message)
-
+        afficherErreur(field, message);
     } else {
-        field.closest('div').setAttribute("data-error-visible", false);
+        retirerErreur(field);
     }
 //    console.log(isValid);
     return isValid;
 }
 
 //fonction qui sert à savoir si une ville est cochée
-export function validerChampVille(fields, message)
+export function validerChampVille(fields)
  {
-     console.dir(fields);
+     let locationError = document.querySelector('.location-msg');
      let isValid = fields.length > 0;
+     
+
+     if ( isValid === false || isValid === null)
+    {
+    console.log("ouesh");
+    locationError.classList.add("error-display")
+    }  else {
+        locationError.classList.remove("error-display")
+    }
+     console.log(isValid);
      return isValid;
-    //  for (let i = 0; i < field.length; i++)
-    //  { 
-    //      let isValid = false;
-    //      if (field[i].checked){
-    //          console.log("c'est coché");
-    //          return true;
-    //      }
-    //      console.log("c'est pas coché");
-        
-    //  }
+   
+   
  }
 //fonction qui sert à savoir si la condition est cochée
 export function validerConditions(field, message)
@@ -131,26 +130,14 @@ export function validerConditions(field, message)
 
      if (isValid === false)
     {
-        field.closest('div').setAttribute("data-error-visible", true);
-        field.closest('div').setAttribute("data-error", message)
+        afficherErreur(field, message);
     } else {
-        field.closest('div').setAttribute("data-error-visible", false);
+        retirerErreur(field);
     }
   //   console.log(isValid);
      return isValid;
  }
 
- //fonction pour ajouter message d'erreur
- 
-// function retirerErreur (field, message) {
-    
-//     if isValid {
-//         field.closest('div').setAttribute("data-error-visible", false);
-//     } else {
-//         field.closest('div').setAttribute("data-error-visible", true);
-//         field.closest('div').setAttribute("data-error", message);
-//     }
-// }
 
 function messageErreur () {
     if ( validerChampText(champPrenom) == false) {
