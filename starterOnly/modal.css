@@ -180,9 +180,7 @@ main {
   overflow: auto;
   background-color: rgba(26, 39, 156, 0.4);
 }
- .misha {
-   display: block;
- }
+ 
 .content {
   margin: 5% auto;
   width: 100%;
@@ -290,6 +288,7 @@ input[data-error]::after {
 
 .location-msg {
   display: none;
+  justify-content: flex-end;
 }
 .error-display {
   color:#e54858;
