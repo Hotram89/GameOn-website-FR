@@ -16,7 +16,6 @@ export function validerChamps()
     let msgCond = "Veuillez accepter les conditions pour finaliser l'inscription";
     let msgChall = "Vous devez entrer un nombre";
     let msgVille = "Vous devez choisir une option";
-    //recuperer tout les true et false et calculer le resultat final
     
     validerChampText(champPrenom , msgPrenom)
      validerChampText(champNom, msgNom)
@@ -32,12 +31,10 @@ export function validerChamps()
 // cas 3               n'a pas d'erreur                a 0 erreur      
 // cas 4               avait 1 erreur                  a 0 erreur      retirerErreur
 
-
 function afficherErreur(field, message)
 {
     if ( field.closest('div').getAttribute('data-error-visible') === 'false' || field.closest('div').getAttribute('data-error-visible') === null)
     {
-    console.log('afficher erreur');
     field.closest('div').setAttribute("data-error-visible", true);
     field.closest('div').setAttribute("data-error", message);
     }  
@@ -51,7 +48,7 @@ function retirerErreur(field, message)
 // fonction qui sert a savoir si le prenom est correct
  function validerChampText(field, message) 
 {   
-    let isValid = field.value.trim().length > 2;
+    let isValid = field.value.trim().length > 1;
     if (isValid === false)
     {
         afficherErreur(field, message);
@@ -72,8 +69,7 @@ function retirerErreur(field, message)
         retirerErreur(field);
     }
  //   console.log(isValid);
-    return isValid;
-    
+    return isValid;    
 }
 // fonction qui sert a savoir si la date est entrée
  function validerChampDate(field, message)
@@ -82,7 +78,6 @@ function retirerErreur(field, message)
     if (isValid === false)
     {
         afficherErreur(field, message);
-    
     } else {
         retirerErreur(field);
     }
@@ -110,16 +105,13 @@ export function validerChampVille(fields)
      let locationError = document.querySelector('.location-msg');
      let isValid = fields.length > 0;
      
-
      if ( isValid === false || isValid === null)
-    {
-    console.log("ouesh");
+    {   
     locationError.setAttribute("data-error-visible", true)
     locationError.classList.add("error-display")
     }  else {
         locationError.classList.remove("error-display");
-        locationError.setAttribute("data-error-visible", false)
-    
+        locationError.setAttribute("data-error-visible", false)  
      return isValid;
     }
  }
@@ -127,7 +119,6 @@ export function validerChampVille(fields)
  function validerConditions(field, message)
  {
      let isValid = field.checked;
-
      if (isValid === false)
     {
         afficherErreur(field, message);

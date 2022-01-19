@@ -8,6 +8,7 @@ const closeFormThanks = document.getElementById("cross-success");
 const modalbg = document.getElementById("formWindow");
 const modalBtn = document.querySelectorAll(".modal-btn");
 const successModal = document.querySelector('.modal-thanks');
+const endBtn = document.querySelector('.btn-thanks');
 
 
 // launch modal function
@@ -31,9 +32,12 @@ export function openSuccessModal() {
   successModal.style.display = 'flex';
 }
 
-//close success modal
+//close success modal avec la croix
 function closeThanksModal() {
   successModal.style.display = "none";
 }
-// fermer la fenetre
+// fermer la fenetre avec la croix
 closeFormThanks.addEventListener("click", closeThanksModal);
+
+// fermer la fenetre avec le bouton
+endBtn.addEventListener("click", closeThanksModal);
