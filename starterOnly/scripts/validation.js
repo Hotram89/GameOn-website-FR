@@ -114,17 +114,17 @@ export function validerChampVille(fields)
      if ( isValid === false || isValid === null)
     {
     console.log("ouesh");
+    locationError.setAttribute("data-error-visible", true)
     locationError.classList.add("error-display")
     }  else {
-        locationError.classList.remove("error-display")
-    }
-     console.log(isValid);
+        locationError.classList.remove("error-display");
+        locationError.setAttribute("data-error-visible", false)
+    
      return isValid;
-   
-   
+    }
  }
 //fonction qui sert à savoir si la condition est cochée
-export function validerConditions(field, message)
+ function validerConditions(field, message)
  {
      let isValid = field.checked;
 
@@ -137,14 +137,4 @@ export function validerConditions(field, message)
   //   console.log(isValid);
      return isValid;
  }
-
-
-function messageErreur () {
-    if ( validerChampText(champPrenom) == false) {
-        console.log( "message d'erreur");
-    }
-}
-
-
-
 
