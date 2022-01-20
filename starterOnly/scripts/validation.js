@@ -1,37 +1,31 @@
 // fonction qui sert a savoir si mes champs sont valides
-export function validerChamps() 
+export function validateFields() 
 {
-    let champPrenom = document.querySelector('#first');
-    let champNom = document.querySelector('#last');
-    let champEmail = document.querySelector('#email');
-    let champDate = document.querySelector('#birthdate');
-    let champChallenge = document.querySelector('#quantity');
-    let champVilles = document.querySelectorAll('input[name=location]:checked');
-    let champCondition = document.querySelector('#checkbox1');
+    let firstName = document.querySelector('#first');
+    let lastName = document.querySelector('#last');
+    let email = document.querySelector('#email');
+    let birthdate = document.querySelector('#birthdate');
+    let challenge = document.querySelector('#quantity');
+    let cities = document.querySelectorAll('input[name=location]:checked');
+    let terms = document.querySelector('#checkbox1');
 
-    let msgPrenom = "Le prénom doit contenir au minimum 2 caractères";
-    let msgNom = "Le nom doit contenir au minimum 2 caractères";
-    let msgMail = "Veuillez respectez le format du courriel (exemple@domaine.fr)";
+    let msgFirstName = "Le prénom doit contenir au minimum 2 caractères";
+    let msgLastName = "Le nom doit contenir au minimum 2 caractères";
+    let msgEmail = "Veuillez respectez le format du courriel (exemple@domaine.fr)";
     let msgDate = "Vous devez entrer votre date de naissance";
     let msgCond = "Veuillez accepter les conditions pour finaliser l'inscription";
     let msgChall = "Vous devez entrer un nombre";
-    let msgVille = "Vous devez choisir une option";
     
-    validerChampText(champPrenom , msgPrenom)
-     validerChampText(champNom, msgNom)
-     validerChampEmail(champEmail, msgMail)
-     validerChampDate(champDate, msgDate)
-     validerChampChallenge(champChallenge, msgChall)
-     validerChampVille(champVilles, msgVille)
-     validerConditions(champCondition, msgCond);
-
+    validateTextField(firstName , msgFirstName)
+     validateTextField(lastName, msgLastName)
+     validateEmailField(email, msgEmail)
+     validateDateField(birthdate, msgDate)
+     validateChallengeField(challenge, msgChall)
+     validateCityCheckbox(cities)
+     validateTerms(terms, msgCond);
 }
-// cas 1  etat initial n'a pas d'erreur  maintenant  a 1 erreur        ajouterErreur
-// cas 2               avait 1 erreur                 a 1 erreur       
-// cas 3               n'a pas d'erreur                a 0 erreur      
-// cas 4               avait 1 erreur                  a 0 erreur      retirerErreur
 
-function afficherErreur(field, message)
+function showError(field, message)
 {
     if ( field.closest('div').getAttribute('data-error-visible') === 'false' || field.closest('div').getAttribute('data-error-visible') === null)
     {
@@ -40,67 +34,62 @@ function afficherErreur(field, message)
     }  
 }
 
-function retirerErreur(field, message)
+function hideError(field, message)
 {
     field.closest('div').setAttribute("data-error-visible", false)   
 }
 
 // fonction qui sert a savoir si le prenom est correct
- function validerChampText(field, message) 
+ function validateTextField(field, message) 
 {   
     let isValid = field.value.trim().length > 1;
     if (isValid === false)
     {
-        afficherErreur(field, message);
+        showError(field, message);
     } else {
-        retirerErreur(field);
+        hideError(field);
     } 
 }
 
 // fonction qui sert a savoir si l'email est correct
- function validerChampEmail(field, message)
+ function validateEmailField(field, message)
 {
     let email= field.value;
     let isValid = /^[\.\w_-]+@[\w-]+\.[a-z]{2,4}$/i.test(email);
     if (isValid === false)
     {
-        afficherErreur(field, message);
+        showError(field, message);
     } else {
-        retirerErreur(field);
+        hideError(field);
     }
- //   console.log(isValid);
     return isValid;    
 }
 // fonction qui sert a savoir si la date est entrée
- function validerChampDate(field, message)
+ function validateDateField(field, message)
 {
     let isValid = field.value.trim().length > 0 ;
     if (isValid === false)
     {
-        afficherErreur(field, message);
+        showError(field, message);
     } else {
-        retirerErreur(field);
+        hideError(field);
     }
- //   console.log(isValid);
-    return isValid;
 }
 
 //fonction qui sert à savoir si un nombre est entré
- function validerChampChallenge(field, message)
+ function validateChallengeField(field, message)
 { 
     let isValid = field.value.length > 0 ;
     if (isValid === false)
     {
-        afficherErreur(field, message);
+        showError(field, message);
     } else {
-        retirerErreur(field);
+        hideError(field);
     }
-//    console.log(isValid);
-    return isValid;
 }
 
 //fonction qui sert à savoir si une ville est cochée
-export function validerChampVille(fields)
+export function validateCityCheckbox(fields)
  {
      let locationError = document.querySelector('.location-msg');
      let isValid = fields.length > 0;
@@ -112,20 +101,16 @@ export function validerChampVille(fields)
     }  else {
         locationError.classList.remove("error-display");
         locationError.setAttribute("data-error-visible", false)  
-     return isValid;
     }
  }
 //fonction qui sert à savoir si la condition est cochée
- function validerConditions(field, message)
+ function validateTerms(field, message)
  {
      let isValid = field.checked;
      if (isValid === false)
     {
-        afficherErreur(field, message);
+        showError(field, message);
     } else {
-        retirerErreur(field);
+        hideError(field);
     }
-  //   console.log(isValid);
-     return isValid;
  }
-

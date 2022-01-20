@@ -10,7 +10,6 @@ const modalBtn = document.querySelectorAll(".modal-btn");
 const successModal = document.querySelector('.modal-thanks');
 const endBtn = document.querySelector('.btn-thanks');
 
-
 // launch modal function
 export function launchModal() {
     modalbg.style.display = "block";
@@ -25,10 +24,8 @@ function closeModal() {
 // fermer la fenetre
 closeForm.addEventListener("click", closeModal );
   
-
 // ouvrir la fenetre quand c'est validé
 export function openSuccessModal() {
-  
   successModal.style.display = 'flex';
 }
 
