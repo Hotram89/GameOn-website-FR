@@ -2,6 +2,7 @@
 // que les colonnes d’une application pilotée par modèle
 // sont affichées, masquées ou définies avec les valeurs correctes.
 
+
 // DOM Elements
     const closeForm = document.getElementById('cross');
     const closeFormThanks = document.getElementById('cross-success');
@@ -9,6 +10,7 @@
     const modalBtn = document.querySelectorAll('.modal-btn');
     const successModal = document.querySelector('.modal-thanks');
     const endBtn = document.querySelector('.btn-thanks');
+  
 
 // launch modal function
 export function launchModal() {
@@ -38,3 +40,5 @@ closeFormThanks.addEventListener('click', closeThanksModal);
 
 // fermer la fenetre avec le bouton
 endBtn.addEventListener('click', closeThanksModal);
+
+

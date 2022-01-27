@@ -41,7 +41,7 @@ function hideError(field, message) {
 
 // fonction qui sert a savoir si le prenom est correct
 function validateTextField(field, message) {
-    if (field.value.trim().length > 1 && /^[a-z ,.'-']+$/i.test(field.value)) {
+    if (field.value.trim().length > 1 && /^[a-zéèêë ,.'-']+$/i.test(field.value)) {
         hideError(field);
         return;
     }

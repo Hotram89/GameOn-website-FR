@@ -68,14 +68,14 @@ img {
 .topnav .icon {
   display: none;
 }
-
 @media screen and (max-width: 768px) {
-  .topnav a {display: none;}
-  .topnav a.icon {
-    float: right;
-    display: block;
+    .topnav a {display: none;}
+    .topnav a.icon {
+      float: right;
+      display: block;
+    }
   }
-}
+  
 
 @media screen and (max-width: 768px) {
   .topnav.responsive {position: relative;}
@@ -90,15 +90,14 @@ img {
     text-align: left;
   }
 }
-
- @media screen and (max-width: 540px) {
-  .topnav a {display: none;}
-  .topnav a.icon {
-    float: right;
-    display: block;
-    margin-top: -15px;
-  }
-} 
+@media screen and (max-width: 540px) {
+    .topnav a {display: none;}
+    .topnav a.icon {
+      float: right;
+      display: block;
+      margin-top: -15px;
+    }
+  } 
 
 main {
   font-size: 130%;
