@@ -75,7 +75,7 @@ function validateChallengeField(field, message) {
         hideError(field);
         return;
     }
-    showError(field);
+    showError(field, message);
 }
 
 //fonction qui sert à savoir si une ville est cochée
