@@ -33,6 +33,10 @@ img {
 /***menu haut ****/
 .topnav {
   overflow: hidden;
+  
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   margin: 3.5%;
 }
 .header-logo {
@@ -96,7 +100,7 @@ img {
     .topnav a.icon {
       float: right;
       display: block;
-      margin-top: -15px;
+      
     }
     
   } 
@@ -567,7 +571,7 @@ footer {
   }
   .hero-headline {
     font-size: 2.2rem;
-    font-weight: 500;
+    font-weight: 700;
     white-space: normal;
   }
   .hero-text {
