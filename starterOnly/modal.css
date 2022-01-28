@@ -33,10 +33,6 @@ img {
 /***menu haut ****/
 .topnav {
   overflow: hidden;
-  
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
   margin: 3.5%;
 }
 .header-logo {
