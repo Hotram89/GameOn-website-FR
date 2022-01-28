@@ -30,13 +30,14 @@ p {
 img {
   padding-right: 1rem;
 }
-
+/***menu haut ****/
 .topnav {
   overflow: hidden;
   margin: 3.5%;
 }
 .header-logo {
     float: left;
+    height: 50px;
 }
 .main-navbar {
     float: right;
@@ -97,6 +98,7 @@ img {
       display: block;
       margin-top: -15px;
     }
+    
   } 
 
 main {
@@ -488,7 +490,7 @@ input[data-error]::after {
   color: #fff;
   position: relative;
   text-align: left;
-  min-width: 424px;
+  
 }
 .hero-content::after {
   content: "";
@@ -555,7 +557,7 @@ footer {
   .hero-content {
     background: #fff;
     color: #000;
-    padding: 20px;
+    padding: 0;
   }
   .hero-content::after {
     content: unset;
@@ -564,7 +566,8 @@ footer {
     display: none;
   }
   .hero-headline {
-    font-size: 4.5rem;
+    font-size: 2.2rem;
+    font-weight: 500;
     white-space: normal;
   }
   .hero-text {
